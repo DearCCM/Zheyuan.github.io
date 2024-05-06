@@ -50,7 +50,11 @@ def main():
 
     ventilation_time = st.number_input("Ventilation time (h)", value=0.0, format="%.2f")
     MIN_urine = st.number_input("Urine output_min (ml)", value=0.0, format="%.2f")
-    hydragogue = st.selectbox("Diuretics", ["without", "20mg", ">200mg"])
+    # 在获取用户输入时使用 selectbox，然后根据用户选择获取对应的数字值
+    hydragogue_input = st.selectbox("Diuretics", ["without", "20mg", ">200mg"])
+    # 使用映射获取对应的数字值
+    hydragogue_value = hydragogue_mapping[hydragogue_input]
+
     SCR = st.number_input("Scr (μmol/L)", value=0.0, format="%.2f")
     HR = st.number_input("Heart rate (bpm/min)", value=0, format="%d")
     UREA = st.number_input("Urea (mmol/L)", value=0.0, format="%.2f")
