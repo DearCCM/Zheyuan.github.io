@@ -48,7 +48,7 @@ def main():
 
     st.subheader("AKI Features")
 
-    ventilation_time = st.number_input("Ventilation time (h)", value=0.0, format="%d")
+    ventilation_time = st.number_input("Ventilation time (h)", value=0.0, format="%.2f")
     MIN_urine = st.number_input("Urine output_min (ml)", value=0.0, format="%.2f")
     hydragogue = st.selectbox("Diuretics", ["No", "20mg", "＞200mg"])
     SCR = st.number_input("Scr (μmol/L)", value=0.0, format="%.2f")
