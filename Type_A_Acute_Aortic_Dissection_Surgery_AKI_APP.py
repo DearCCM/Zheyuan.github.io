@@ -48,7 +48,7 @@ def main():
 
     st.subheader("AKI Features")
 
-    ventilation_time = st.number_input("Ventilation time (h)", value=0.0, format="%.2f")
+    ventilation_time = st.number_input("Ventilation time (h)", value=0.0, format="%d")
     MIN_urine = st.number_input("Urine output_min (ml)", value=0.0, format="%.2f")
     hydragogue = st.selectbox("Diuretics", ["No", "20mg", "＞200mg"])
     SCR = st.number_input("Scr (μmol/L)", value=0.0, format="%.2f")
@@ -59,7 +59,7 @@ def main():
     GLU =  st.number_input("Blood Glucose (mmol/L)", value=0.0, format="%.2f")
     MCHC =  st.number_input("MCHC (g/L)", value=0.0, format="%.2f")
 
-    features.extend(['ventilation_time', 'hydragogue', 'SCR', 'MIN_urine', 'HR', 'natriuretic_peptide', 'ebrantil', 'UREA', 'GLU', 'MCHC'])
+    features.extend([ventilation_time, hydragogue, SCR, MIN_urine, HR, natriuretic_peptide, ebrantil, UREA, GLU, MCHC])
 
     # Create a button to make predictions
     if st.button('Predict AKI Probability'):
