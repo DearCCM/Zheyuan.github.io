@@ -56,7 +56,7 @@ def main():
 
 
     
-    features.extend([Scr_MAX,UREA_MAX, egfrmin, DD_MAX, MIN_urine, ventilation_time,P_MAX, Scr_MIN, WBC_MIN, HR])
+    features.extend([ventilation_time, MIN_urine, hydragogue, SCR, HR, UREA])
 
     # Create a button to make predictions
     if st.button('Predict AKI Probability'):
