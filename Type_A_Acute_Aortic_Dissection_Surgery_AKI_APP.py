@@ -6,7 +6,7 @@ import numpy as np
 aki_model = lgb.Booster(model_file='Type_A_Acute_Aortic_Dissection_Surgery_AKI_model.txt')
 
 
-hydragogue_mapping = {"0-20mg": 0, "20mg": 1, "＞200mg": 2}
+hydragogue = {"without": 0, "20mg": 1, "＞200mg": 2}
 ebrantil = {"with": 1, "without": 0}
 natriuretic_peptide = {"with": 1, "without": 0}
 
@@ -51,7 +51,7 @@ def main():
 
     ventilation_time = st.number_input("Ventilation time (h)", value=0.0, format="%.2f")
     MIN_urine = st.number_input("Urine output_min (ml)", value=0.0, format="%.2f")
-    hydragogue = st.selectbox("Diuretics", ["Without", "20mg", "＞200mg"])
+    hydragogue = st.selectbox("Diuretics", ["without", "20mg", "＞200mg"])
     SCR = st.number_input("Scr (μmol/L)", value=0.0, format="%.2f")
     HR = st.number_input("Heart rate (bpm/min)", value=0, format="%d")
     UREA = st.number_input("Urea (mmol/L)", value=0.0, format="%.2f")
