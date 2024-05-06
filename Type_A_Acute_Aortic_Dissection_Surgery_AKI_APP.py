@@ -54,8 +54,8 @@ def main():
     SCR = st.number_input("Scr (μmol/L)", value=0.0, format="%.2f")
     HR = st.number_input("Heart rate (bpm/min)", value=0, format="%d")
     UREA = st.number_input("Urea (mmol/L)", value=0.0, format="%.2f")
-    natriuretic_peptide = st.selectbox("Natriuretic_peptide", ["With", "without"])
-    ebrantil = st.selectbox("ebrantil", ["With", "without"])
+    natriuretic_peptide = st.selectbox("Natriuretic_peptide", ["1", "0"])
+    ebrantil = st.selectbox("ebrantil", ["1", "0"])
     GLU =  st.number_input("Blood Glucose (mmol/L)", value=0.0, format="%.2f")
     MCHC =  st.number_input("MCHC (g/L)", value=0.0, format="%.2f")
 
