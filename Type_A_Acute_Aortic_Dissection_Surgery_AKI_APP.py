@@ -7,8 +7,8 @@ aki_model = lgb.Booster(model_file='Type_A_Acute_Aortic_Dissection_Surgery_AKI_m
 
 
 hydragogue_mapping = {"without": 0, "20mg": 1, "＞200mg": 2}
-ebrantil = {"with": 1, "without": 0}
-natriuretic_peptide = {"with": 1, "without": 0}
+ebrantil = {"without": 0, "with": 1}
+natriuretic_peptide = {"without": 0, "with": 1}
 
 
 # Define mapping dictionaries
@@ -55,8 +55,8 @@ def main():
     SCR = st.number_input("Scr (μmol/L)", value=0.0, format="%.2f")
     HR = st.number_input("Heart rate (bpm/min)", value=0, format="%d")
     UREA = st.number_input("Urea (mmol/L)", value=0.0, format="%.2f")
-    natriuretic_peptide = st.selectbox("Natriuretic_peptide", ["With", "without"])
-    ebrantil = st.selectbox("ebrantil", ["With", "without"])
+    natriuretic_peptide = st.selectbox("Natriuretic_peptide", ["without", "With"])
+    ebrantil = st.selectbox("ebrantil", ["without", "With"])
     GLU =  st.number_input("Blood Glucose (mmol/L)", value=0.0, format="%.2f")
     MCHC =  st.number_input("MCHC (g/L)", value=0.0, format="%.2f")
 
