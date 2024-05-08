@@ -13,10 +13,17 @@ natriuretic_peptide_mapping = { "without": 0, "With": 1}
 # Define mapping dictionaries
 
 def preprocess_features(features):
+    # 添加边界检查以防止索引错误
+    if len(features) >= 2:
+        features[3] = hydragogue_mapping.get(features[3], 0)  # 默认值为 0
+    else:
+        # 如果特征数组长度不足，则返回原始特征数组
+        return features
+
     # 将特征字符串映射为数值
-    features[1] = hydragogue_mapping[features[1]]
-    features[5] = natriuretic_peptide_mapping[features[5]]
-    features[6] = ebrantil_mapping[features[6]]
+    features[3] = hydragogue_mapping[features[3]]
+    features[7] = natriuretic_peptide_mapping[features[7]]
+    features[8] = ebrantil_mapping[features[8]]
     return features
 
 def predict_aki_probability(features):
