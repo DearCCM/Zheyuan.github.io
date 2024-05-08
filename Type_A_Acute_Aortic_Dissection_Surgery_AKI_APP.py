@@ -7,8 +7,8 @@ aki_model = lgb.Booster(model_file='Type_A_Acute_Aortic_Dissection_Surgery_AKI_m
 
 
 hydragogue_mapping = {"without": 0, "20mg": 1, "＞200mg": 2}
-ebrantil_mapping = { "without": 0, "With": 1}
-natriuretic_peptide_mapping = { "without": 0, "With": 1}
+ebrantil_mapping = { "without": 0, "with": 1}
+natriuretic_peptide_mapping = { "without": 0, "with": 1}
 
 
 # Define mapping dictionaries
@@ -51,16 +51,16 @@ def main():
 
     ventilation_time = st.number_input("Ventilation time (h)", value=0.0, format="%.2f")
     MIN_urine = st.number_input("Urine output_min (ml)", value=0.0, format="%.2f")
-    hydragogue_mapping = st.selectbox("Diuretics", ["Without", "20mg", "＞200mg"])
+    hydragogue = st.selectbox("Diuretics", ["Without", "20mg", "＞200mg"])
     SCR = st.number_input("Scr (μmol/L)", value=0.0, format="%.2f")
     HR = st.number_input("Heart rate (bpm/min)", value=0, format="%d")
     UREA = st.number_input("Urea (mmol/L)", value=0.0, format="%.2f")
-    natriuretic_peptide_mapping = st.selectbox("Natriuretic_peptide", ["With", "without"])
-    ebrantil_mapping = st.selectbox("ebrantil", ["With", "without"])
+    natriuretic_peptide = st.selectbox("Natriuretic_peptide", ["without", "with"])
+    ebrantil = st.selectbox("ebrantil", ["without", "with"])
     GLU =  st.number_input("Blood Glucose (mmol/L)", value=0.0, format="%.2f")
     MCHC =  st.number_input("MCHC (g/L)", value=0.0, format="%.2f")
 
-    features.extend([ventilation_time, hydragogue_mapping, SCR, MIN_urine, HR, natriuretic_peptide_mapping, ebrantil_mapping, UREA, GLU, MCHC])
+    features.extend([ventilation_time, hydragogue, SCR, MIN_urine, HR, natriuretic_peptide, ebrantil, UREA, GLU, MCHC])
 
     # Create a button to make predictions
     if st.button('Predict AKI Probability'):
