@@ -57,8 +57,9 @@ def main():
     ebrantil = st.selectbox("ebrantil", ["without", "with"])
     GLU =  st.number_input("Blood Glucose (mmol/L)", value=0.0, format="%.2f")
     MCHC =  st.number_input("MCHC (g/L)", value=0.0, format="%.2f")
+   
     # 根据用户选择从映射字典中获取相应的数字值
-    hydragogue_value = hydragogue_mapping[hydragogue]
+    hydragogue_value = hydragogue_mapping
     
     # 将特征添加到列表中
     features.extend([ventilation_time, hydragogue_value, SCR, MIN_urine, HR, natriuretic_peptide, ebrantil, UREA, GLU, MCHC])
