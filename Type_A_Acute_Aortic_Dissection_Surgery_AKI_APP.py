@@ -10,25 +10,10 @@ hydragogue_mapping = {"without": 0, "20mg": 1, "＞200mg": 2}
 ebrantil_mapping = { "without": 0, "With": 1}
 natriuretic_peptide_mapping = { "without": 0, "With": 1}
 
+
 # Define mapping dictionaries
 
-def preprocess_features(features):
-    # 添加边界检查以防止索引错误
-    if len(features) >= 2:
-        features[3] = hydragogue_mapping.get(features[3], 0)  # 默认值为 0
-    else:
-        # 如果特征数组长度不足，则返回原始特征数组
-        return features
-
-    # 将特征字符串映射为数值
-    features[3] = hydragogue_mapping[features[3]]
-    features[7] = natriuretic_peptide_mapping[features[7]]
-    features[8] = ebrantil_mapping[features[8]]
-    return features
-
 def predict_aki_probability(features):
-    # 预处理特征
-    features = preprocess_features(features)
     aki_prob = aki_model.predict(features)
     return aki_prob[0]
 
@@ -66,12 +51,12 @@ def main():
 
     ventilation_time = st.number_input("Ventilation time (h)", value=0.0, format="%.2f")
     MIN_urine = st.number_input("Urine output_min (ml)", value=0.0, format="%.2f")
-    hydragogue = st.selectbox("Diuretics", ["without", "20mg", "＞200mg"])
+    hydragogue = st.selectbox("Diuretics", ["Without", "20mg", "＞200mg"])
     SCR = st.number_input("Scr (μmol/L)", value=0.0, format="%.2f")
     HR = st.number_input("Heart rate (bpm/min)", value=0, format="%d")
     UREA = st.number_input("Urea (mmol/L)", value=0.0, format="%.2f")
-    natriuretic_peptide = st.selectbox("Natriuretic_peptide", ["without", "With"])
-    ebrantil = st.selectbox("ebrantil", ["without", "With"])
+    natriuretic_peptide = st.selectbox("Natriuretic_peptide", ["With", "without"])
+    ebrantil = st.selectbox("ebrantil", ["With", "without"])
     GLU =  st.number_input("Blood Glucose (mmol/L)", value=0.0, format="%.2f")
     MCHC =  st.number_input("MCHC (g/L)", value=0.0, format="%.2f")
 
