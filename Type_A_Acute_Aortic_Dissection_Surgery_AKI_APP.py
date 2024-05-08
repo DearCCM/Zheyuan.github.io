@@ -62,6 +62,7 @@ def main():
     hydragogue = st.selectbox("Diuretics", ["without", "20mg", "＞200mg"])
     SCR = st.number_input("Scr (μmol/L)", value=0.0, format="%.2f")
     HR = st.number_input("Heart rate (bpm/min)", value=0, format="%d")
+    UREA = st.number_input("Urea (mmol/L)", value=0.0, format="%.2f")
     natriuretic_peptide = st.selectbox("Natriuretic_peptide", ["without", "With"])
     ebrantil = st.selectbox("ebrantil", ["without", "With"])
     GLU =  st.number_input("Blood Glucose (mmol/L)", value=0.0, format="%.2f")
