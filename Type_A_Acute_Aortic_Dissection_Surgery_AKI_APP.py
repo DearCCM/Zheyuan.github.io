@@ -10,15 +10,14 @@ hydragogue_mapping = {"without": 0, "20mg": 1, "＞200mg": 2}
 ebrantil_mapping = { "without": 0, "With": 1}
 natriuretic_peptide_mapping = { "without": 0, "With": 1}
 
-
 # Define mapping dictionaries
 
-# 将特征字符串映射为数值
-features[1] = hydragogue_mapping[features[1]]
-features[5] = natriuretic_peptide_mapping[features[5]]
-features[6] = ebrantil_mapping[features[6]]
-return features
-
+def preprocess_features(features):
+    # 将特征字符串映射为数值
+    features[1] = hydragogue_mapping[features[1]]
+    features[5] = natriuretic_peptide_mapping[features[5]]
+    features[6] = ebrantil_mapping[features[6]]
+    return features
 
 def predict_aki_probability(features):
     # 预处理特征
