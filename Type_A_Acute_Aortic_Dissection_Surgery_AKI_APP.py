@@ -60,10 +60,12 @@ def main():
    
     # 根据用户选择从映射字典中获取相应的数字值
     hydragogue_value = hydragogue_mapping[hydragogue]
+    ebrantil_value = ebrantil_mapping[ebrantil]
+    natriuretic_peptide_value = natriuretic_peptide_mapping[natriuretic_peptide]
     
     # 将特征添加到列表中
-    features.extend([ventilation_time, hydragogue_value, SCR, MIN_urine, HR, natriuretic_peptide, ebrantil, UREA, GLU, MCHC])
-
+    features.extend([ventilation_time, hydragogue_value, SCR, MIN_urine, HR, natriuretic_peptide_value, ebrantil_value, UREA, GLU, MCHC])
+  
     # Create a button to make predictions
     if st.button('Predict AKI Probability'):
         features_array = np.array(features).reshape(1, -1)
