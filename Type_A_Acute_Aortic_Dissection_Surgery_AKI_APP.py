@@ -5,13 +5,11 @@ import numpy as np
 # Load the AKI model
 aki_model = lgb.Booster(model_file='Type_A_Acute_Aortic_Dissection_Surgery_AKI_model.txt')
 
-
-hydragogue = hydragogue_mapping = {"without": 0, "20mg": 1, "＞200mg": 2}
-ebrantil = ebrantil_mapping = { "without": 0, "with": 1}
-natriuretic_peptide = natriuretic_peptide_mapping = { "without": 0, "with": 1}
-
-
 # Define mapping dictionaries
+
+hydragogue_mapping = {"without": 0, "20mg": 1, "＞200mg": 2}
+ebrantil_mapping = { "without": 0, "with": 1}
+natriuretic_peptide_mapping = { "without": 0, "with": 1}
 
 def predict_aki_probability(features):
     aki_prob = aki_model.predict(features)
@@ -59,8 +57,11 @@ def main():
     ebrantil = st.selectbox("ebrantil", ["without", "with"])
     GLU =  st.number_input("Blood Glucose (mmol/L)", value=0.0, format="%.2f")
     MCHC =  st.number_input("MCHC (g/L)", value=0.0, format="%.2f")
-
-    features.extend([ventilation_time, hydragogue, SCR, MIN_urine, HR, natriuretic_peptide, ebrantil, UREA, GLU, MCHC])
+    # 根据用户选择从映射字典中获取相应的数字值
+    hydragogue_value = hydragogue_mapping[hydragogue]
+    
+    # 将特征添加到列表中
+    features.extend([ventilation_time, hydragogue_value, SCR, MIN_urine, HR, natriuretic_peptide, ebrantil, UREA, GLU, MCHC])
 
     # Create a button to make predictions
     if st.button('Predict AKI Probability'):
