@@ -14,6 +14,8 @@ natriuretic_peptide = {"without": 0, "with": 1}
 # Define mapping dictionaries
 
 def predict_aki_probability(features):
+    # 对特征进行预处理，如映射和转换
+    features = preprocess_features(features)
     aki_prob = aki_model.predict(features)
     return aki_prob[0]
 
