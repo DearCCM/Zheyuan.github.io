@@ -49,7 +49,7 @@ def main():
 
     ventilation_time = st.number_input("Ventilation time (h)", value=0.0, format="%.2f")
     MIN_urine = st.number_input("Urine output_min (ml)", value=0.0, format="%.2f")
-    hydragogue_mapping = st.selectbox("Diuretics", ["Without", "20mg", "＞200mg"])
+    hydragogue = st.selectbox("Diuretics", ["Without", "20mg", "＞200mg"])
     SCR = st.number_input("Scr (μmol/L)", value=0.0, format="%.2f")
     HR = st.number_input("Heart rate (bpm/min)", value=0, format="%d")
     UREA = st.number_input("Urea (mmol/L)", value=0.0, format="%.2f")
@@ -59,7 +59,7 @@ def main():
     MCHC =  st.number_input("MCHC (g/L)", value=0.0, format="%.2f")
    
     # 根据用户选择从映射字典中获取相应的数字值
-    hydragogue_value = hydragogue_mapping
+    hydragogue_value = hydragogue_mapping[hydragogue]
     
     # 将特征添加到列表中
     features.extend([ventilation_time, hydragogue_value, SCR, MIN_urine, HR, natriuretic_peptide, ebrantil, UREA, GLU, MCHC])
