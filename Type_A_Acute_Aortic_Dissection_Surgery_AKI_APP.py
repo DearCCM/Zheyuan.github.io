@@ -51,12 +51,12 @@ def main():
 
     ventilation_time = st.number_input("Ventilation time (h)", value=0.0, format="%.2f")
     MIN_urine = st.number_input("Urine output_min (ml)", value=0.0, format="%.2f")
-    hydragogue = st.selectbox("Diuretics", ["Without", "20mg", "＞200mg"])
+    hydragogue_mapping = st.selectbox("Diuretics", ["Without", "20mg", "＞200mg"])
     SCR = st.number_input("Scr (μmol/L)", value=0.0, format="%.2f")
     HR = st.number_input("Heart rate (bpm/min)", value=0, format="%d")
     UREA = st.number_input("Urea (mmol/L)", value=0.0, format="%.2f")
-    natriuretic_peptide = st.selectbox("Natriuretic_peptide", ["without", "with"])
-    ebrantil = st.selectbox("ebrantil", ["without", "with"])
+    natriuretic_peptide_mapping = st.selectbox("Natriuretic_peptide", ["without", "with"])
+    ebrantil_mapping = st.selectbox("ebrantil", ["without", "with"])
     GLU =  st.number_input("Blood Glucose (mmol/L)", value=0.0, format="%.2f")
     MCHC =  st.number_input("MCHC (g/L)", value=0.0, format="%.2f")
 
