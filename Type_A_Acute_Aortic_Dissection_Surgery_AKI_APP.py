@@ -49,7 +49,7 @@ def main():
 
     ventilation_time = st.number_input("Ventilation time (h)", value=0.0, format="%.2f")
     MIN_urine = st.number_input("Urine output_min (ml)", value=0.0, format="%.2f")
-    hydragogue = st.selectbox("Diuretics", ["Without", "20mg", "＞200mg"])
+    hydragogue = st.selectbox("Diuretics", ["without", "20mg", "＞200mg"])
     SCR = st.number_input("Scr (μmol/L)", value=0.0, format="%.2f")
     HR = st.number_input("Heart rate (bpm/min)", value=0, format="%d")
     UREA = st.number_input("Urea (mmol/L)", value=0.0, format="%.2f")
