@@ -7,8 +7,8 @@ aki_model = lgb.Booster(model_file='Type_A_Acute_Aortic_Dissection_Surgery_AKI_m
 
 
 hydragogue_mapping = {"without": 0, "20mg": 1, "＞200mg": 2}
-ebrantil = {"without": 0, "with": 1}
-natriuretic_peptide = {"without": 0, "with": 1}
+ebrantil_mapping = {"without": 0, "with": 1}
+natriuretic_peptide_mapping = {"without": 0, "with": 1}
 
 
 # Define mapping dictionaries
