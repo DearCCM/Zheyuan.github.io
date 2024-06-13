@@ -47,7 +47,7 @@ def main():
     ventilation_time = st.number_input("Ventilation time (h)", value=0.0, format="%.2f")
     HR = st.number_input("Heart rate (bpm/min)", value=0, format="%.2f")
     cadiac_arrest_time = st.number_input("Circulatory arrest time (h)", value=0.0, format="%.2f")
-    HB = st.number_input("Hemoglobin (g/L)", value=0.0, format="%d")
+    HB = st.number_input("Hemoglobin (g/L)", value=0.0, format="%.2f")
     CKMB = st.number_input("CKMB (ng/ml)", value=0.0, format="%.2f")
     GLU =  st.number_input("Blood Glucose (mmol/L)", value=0.0, format="%.2f")
     AST =  st.number_input("AST (U/L)", value=0.0, format="%.2f")
