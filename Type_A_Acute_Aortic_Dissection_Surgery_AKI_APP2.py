@@ -3,7 +3,7 @@ import lightgbm as lgb
 import numpy as np
 
 # Load the AKI model
-aki_model = lgb.Booster(model_file='internalandexternal_aki_model.txt')
+aki_model = lgb.Booster(model_file='anzhen.txt')
 
 # Define mapping dictionaries
 
