@@ -57,7 +57,7 @@ def main():
 
 
     # 将特征添加到列表中
-    features.extend([ SCR, HR, HB, CKMB, ebrantil_value, cadiac_arrest_time, CPB_time, AST, GLU, PLT ])
+    features.extend([ SCR, HR, HB, CKMB, ebrantil, cadiac_arrest_time, CPB_time, AST, GLU, PLT ])
   
     # Create a button to make predictions
     if st.button('Predict AKI Probability'):
