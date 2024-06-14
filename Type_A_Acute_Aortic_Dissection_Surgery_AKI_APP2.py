@@ -5,6 +5,7 @@ import numpy as np
 # Load the AKI model
 aki_model = lgb.Booster(model_file='internalandexternal_aki_model.txt')
 
+ebrantil_mapping = { "without": 0, "with": 1}
 
 def predict_aki_probability(features):
     aki_prob = aki_model.predict(features)
@@ -42,21 +43,21 @@ def main():
 
     st.subheader("AKI Features")
 
-    ICU_time = st.number_input("Length of ICU stay (h)", value=0.0, format="%.2f")
     SCR = st.number_input("Scr (μmol/L)", value=0.0, format="%.2f")
-    ventilation_time = st.number_input("Ventilation time (h)", value=0.0, format="%.2f")
     HR = st.number_input("Heart rate (bpm/min)", value=0, format="%d")
-    cadiac_arrest_time = st.number_input("Circulatory arrest time (h)", value=0.0, format="%.2f")
     HB = st.number_input("Hemoglobin (g/L)", value=0, format="%d")
     CKMB = st.number_input("CKMB (ng/ml)", value=0.0, format="%.2f")
-    GLU =  st.number_input("Blood Glucose (mmol/L)", value=0.0, format="%.2f")
+    ebrantil = st.selectbox("ebrantil", ["without", "with"])
+    CPB_time = st.number_input("Cardiopulmonary bypass time (min)", value=0.0, format="%.2f")
+    cadiac_arrest_time = st.number_input("Circulatory arrest time (min)", value=0.0, format="%.2f")
     AST =  st.number_input("AST (U/L)", value=0.0, format="%.2f")
-    BMI =  st.number_input("BMI (kg/m2)", value=0.0, format="%.2f")
+    GLU =  st.number_input("Blood Glucose (mmol/L)", value=0.0, format="%.2f")
+    PLT =  st.number_input("PLT (10^9/L)", value=0.0, format="%.2f")
 
 
 
     # 将特征添加到列表中
-    features.extend([ ICU_time, SCR, ventilation_time, HR, cadiac_arrest_time, HB, CKMB, GLU, AST, BMI ])
+    features.extend([ SCR, HR, HB, CKMB, ebrantil_value, cadiac_arrest_time, CPB_time, AST, GLU, PLT ])
   
     # Create a button to make predictions
     if st.button('Predict AKI Probability'):
