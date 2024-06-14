@@ -5,7 +5,9 @@ import numpy as np
 # Load the AKI model
 aki_model = lgb.Booster(model_file='internalandexternal_aki_model.txt')
 
+# Define mapping dictionaries
 ebrantil_mapping = { "without": 0, "with": 1}
+
 
 def predict_aki_probability(features):
     aki_prob = aki_model.predict(features)
@@ -42,7 +44,7 @@ def main():
     features = []
 
     st.subheader("AKI Features")
-
+    
     SCR = st.number_input("Scr (μmol/L)", value=0.0, format="%.2f")
     HR = st.number_input("Heart rate (bpm/min)", value=0, format="%d")
     HB = st.number_input("Hemoglobin (g/L)", value=0, format="%d")
@@ -54,10 +56,14 @@ def main():
     GLU =  st.number_input("Blood Glucose (mmol/L)", value=0.0, format="%.2f")
     PLT =  st.number_input("PLT (10^9/L)", value=0.0, format="%.2f")
 
-
-
+   
+    # 根据用户选择从映射字典中获取相应的数字值
+    hydragogue_value = hydragogue_mapping[hydragogue]
+    ebrantil_value = ebrantil_mapping[ebrantil]
+    natriuretic_peptide_value = natriuretic_peptide_mapping[natriuretic_peptide]
+    
     # 将特征添加到列表中
-    features.extend([ SCR, HR, HB, CKMB, ebrantil, cadiac_arrest_time, CPB_time, AST, GLU, PLT ])
+    features.extend([SCR, HR, HB, CKMB, ebrantil_value, CPB_time, cadiac_arrest_time, AST, GLU, PLT])
   
     # Create a button to make predictions
     if st.button('Predict AKI Probability'):
@@ -67,5 +73,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
