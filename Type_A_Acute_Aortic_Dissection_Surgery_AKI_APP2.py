@@ -58,9 +58,7 @@ def main():
 
    
     # 根据用户选择从映射字典中获取相应的数字值
-    hydragogue_value = hydragogue_mapping[hydragogue]
     ebrantil_value = ebrantil_mapping[ebrantil]
-    natriuretic_peptide_value = natriuretic_peptide_mapping[natriuretic_peptide]
     
     # 将特征添加到列表中
     features.extend([SCR, HR, HB, CKMB, ebrantil_value, CPB_time, cadiac_arrest_time, AST, GLU, PLT])
