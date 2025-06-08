@@ -3,7 +3,7 @@ import lightgbm as lgb
 import numpy as np
 
 # Load the AKI model
-aki_model = lgb.Booster(model_file='Type_A_Acute_Aortic_Dissection_Surgery_AKI_model.txt')
+aki_model = lgb.Booster(model_file='AKI_1_3_APP.txt')
 
 # Define mapping dictionaries
 
