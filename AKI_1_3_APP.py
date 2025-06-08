@@ -2,8 +2,8 @@ import streamlit as st
 import lightgbm as lgb
 import numpy as np
 
-# Load the AKI model
-aki_model = lgb.Booster(model_file='AKI_1_3_APP.txt')
+# Load the AKIprogression model
+akiprogression_model = lgb.Booster(model_file='AKI_1_3_APP.txt')
 
 # Define mapping dictionaries
 
@@ -11,9 +11,9 @@ hydragogue_mapping = {"without": 0, "20mg": 1, ">200mg": 2}
 gender_mapping = { "female": 0, "male": 1}
 
 
-def predict_aki_probability(features):
-    aki_prob = aki_model.predict(features)
-    return aki_prob[0]
+def predict_akiprogression_probability(features):
+    akiprogression_prob = akiprogression_model.predict(features)
+    return akiprogression_prob[0]
 
 def main():
     st.title('Prediction of Acute Kidney Injury Progression Following Acute Type A Aortic Dissection Surgery')
@@ -40,7 +40,7 @@ def main():
         st.write("By utilizing this online platform, you agree to the terms and conditions outlined in this disclaimer.")
 
     elif selected_content == "AKI Progression Prediction":
-        st.subheader("AKI Prediction in Patients Following Type A Acute Aortic Dissection Surgery.")
+        st.subheader("AKI Progression Prediction in Patients Following Type A Acute Aortic Dissection Surgery.")
 
     # Feature input
     features = []
@@ -53,7 +53,7 @@ def main():
     ALB = st.number_input("Albumin (g/L)", value=0.0, format="%.2f")
     SCR = st.number_input("Scr (μmol/L)", value=0.0, format="%.2f")
     intraoperative_hemorrhage = st.number_input("Intraoperative hemorrhage (ml)", value=0.0, format="%.2f")
-    gender = st.selectbox("Gender", ["male", "female"])
+    gender = st.selectbox("Gender", ["female", "male"])
     platelet_rich_plasma = st.number_input("Platelet_rich_plasma (ml)", value=0.0, format="%.2f")
     CRP = st.number_input("C-reactive protein (mg/L)", value=0.0, format="%.2f")
     Myocardial_vascularization_time = st.number_input("Myocardial vascularization time (min)", value=0.0, format="%.2f")
@@ -72,8 +72,8 @@ def main():
     # Create a button to make predictions
     if st.button('Predict AKI Progression Probability'):
         features_array = np.array(features).reshape(1, -1)
-        aki_probability = predict_aki_probability(features_array)
-        st.write(f'AKI Probability: {aki_probability:.2f}')
+        aki_probability = predict_aki_progression_probability(features_array)
+        st.write(f'AKI Probability: {aki_progression_probability:.2f}')
 
 if __name__ == '__main__':
     main()
