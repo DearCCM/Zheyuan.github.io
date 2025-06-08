@@ -78,35 +78,3 @@ def main():
 if __name__ == '__main__':
     main()
 
-
-#===================================
-#-------------------------------------------转TXT文本--------------------------------------
-import pandas as pd
-from prefunc import *
-from funs import *
-plt.rcParams['font.family'] = 'Times New Roman'
-from sklearn.utils import resample
-from scipy.stats import norm
-import statsmodels.api as sm#----------------------------------------------------------------------ALL-调参-----------
-# 将CSV文件读取到DataFrame中
-df = pd.read_csv('C:/Users/75454/Desktop/毕业课题/机器学习风险预测/手稿/2.CRRT-AKI/18.12-23.10AADAKI1_3插补.csv', encoding="utf_8_sig")
-#------------------------------------------------------------------------TOP10AUROC------------
-features = ['ventilation_time', 'hydragogue', 'HCO3', 'ALB', 'SCR', 'intraoperative_hemorrhage', 'gender', 'platelet_rich_plasma', 'CRP', 'Myocardial_vascularization_time']
-
-X = df[features]
-y = df['aki1_3'].astype(int)  
-
-
-params = {
-    'max_depth' : 5,
-    'num_leaves' : 14,
-    'learning_rate' : 0.08,
-    'n_estimators' : 288,
-    'verbose' : -1,
-    'force_col_wise' : True
-}
-model = lgb.LGBMRegressor(**params)
-model.fit(X, y)
-
-booster = model.booster_
-booster.save_model('AKI_1_3_APP.txt')
