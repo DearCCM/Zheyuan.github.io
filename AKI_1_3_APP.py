@@ -72,8 +72,8 @@ def main():
     # Create a button to make predictions
     if st.button('Predict AKI Progression Probability'):
         features_array = np.array(features).reshape(1, -1)
-        aki_probability = predict_aki_progression_probability(features_array)
-        st.write(f'AKI Probability: {aki_progression_probability:.2f}')
+        akiprogression_probability = predict_akiprogression_probability(features_array)
+        st.write(f'AKI Progression Probability: {akiprogression_probability:.2f}')
 
 if __name__ == '__main__':
     main()
